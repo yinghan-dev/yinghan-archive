@@ -1,10 +1,8 @@
-# Local Netlify folder
+
 /node_modules/
 .env
 .vscode
 package-lock.json
-# Local Netlify folder
-.netlify
 /articles/.obsidian
 /articles/.obsidian
 /articles/.obsidian
@@ -13,5 +11,4 @@ package-lock.json
 package-lock.json
 package.json
 .gitattributes
-/.vscode/
 CNAME
