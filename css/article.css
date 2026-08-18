@@ -399,12 +399,23 @@ a:hover {
   }
 
   .article-container {
-    padding: 25px 20px;
+    padding: 30px 20px;
     border-radius: 12px;
+    margin-right: auto;
+    margin-top: auto;
   }
 
   .article-title {
-    font-size: 1.7rem;
+    font-size: 1.3rem;
+  }
+
+  .article-date {
+    font-size: 0.9rem;
+  }
+
+  .article-meta {
+    padding-bottom: 5px;
+    margin-bottom: 15px;
   }
 
   .article-content {
