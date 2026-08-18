@@ -27,7 +27,7 @@ body.dark-mode h6 {
 body.dark-mode {
   background-color: #0a0a0a !important;
   color: #e0e0e0 !important;
-  background-image: url("../images/bg1.jpg") !important;
+  background-image: url("../images/bg.webp") !important;
   background-size: cover !important;
   background-position: center !important;
   background-repeat: no-repeat !important;
