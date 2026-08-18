@@ -12,3 +12,5 @@ package-lock.json
 package.json
 .gitattributes
 CNAME
+/articles/idea2.md
+/articles/forecast1.md
