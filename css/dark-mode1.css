@@ -1,0 +1,337 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #000;
+}
+
+/* 主页 - 黑暗模式 */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+  color: #f5f5f5 !important;
+}
+
+/* 基本样式重置 - 黑暗模式 */
+body.dark-mode {
+  background-color: #0a0a0a !important;
+  color: #e0e0e0 !important;
+  background-image: url("../images/bg1.jpg") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  transition: background-image 0.3s ease !important;
+}
+
+body.dark-mode .site-title-day {
+  display: none !important;
+}
+
+body.dark-mode .site-title-dark {
+  display: block !important;
+}
+
+/* 黑暗模式切换按钮 */
+.dark-mode-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  right: auto;
+  z-index: 1000;
+  background: #fff;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+}
+
+.dark-mode-toggle:hover {
+  border-color: #007bff;
+  box-shadow: 0 4px 12px rgb(0 123 255 / 30%);
+  transform: translateY(-1px);
+}
+
+body.dark-mode .dark-mode-toggle {
+  background: #2d2d2d;
+  border-color: #404040;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 60%);
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+  border-color: #64b5f6;
+  box-shadow: 0 4px 12px rgb(100 181 246 / 40%);
+}
+
+body.dark-mode .dark-mode-toggle i {
+  color: #fff !important;
+}
+
+.dark-mode-toggle i {
+  font-size: 20px;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+
+.dark-mode-toggle #dark-mode-icon {
+  color: #000;
+  font-size: 20px;
+}
+
+/* 链接样式 - 黑暗模式 */
+body.dark-mode a {
+  color: #e7ebed !important;
+}
+
+body.dark-mode a:hover {
+  color: #f1f4f6 !important;
+}
+
+/* 黑暗模式下的卡片和容器样式 */
+body.dark-mode .card {
+  background-color: #2a2a2a !important;
+  border: 1px solid #444 !important;
+}
+
+body.dark-mode .card-text {
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode .murmur-section {
+  border-top:0.5px solid #676666;
+}
+
+body.dark-mode .post {
+  background-color: rgb(26 26 26 / 90%) !important;
+  border: 1px solid #333 !important;
+  box-shadow: 0 4px 15px rgb(0 0 0 / 60%) !important;
+}
+
+body.dark-mode .post-title {
+  color: #f5f5f5 !important;
+}
+
+body.dark-mode .post-meta {
+  color: #b0b0b0 !important;
+}
+
+body.dark-mode .post-footer {
+  border-top: 1px solid #404040 !important;
+  color: #b0b0b0 !important;
+}
+
+body.dark-mode .post-tags a {
+  background-color: #2d2d2d !important;
+  color: #e0e0e0 !important;
+  border: 1px solid #404040 !important;
+}
+
+body.dark-mode .post-tags a:hover {
+  background-color: #404040 !important;
+  color: #f5f5f5 !important;
+}
+
+body.dark-mode .column {
+  background-color:  #404040 !important;
+}
+
+body.dark-mode .nav-buttons {
+  background: #2a2a2a !important;
+  border: 1px solid #444 !important;
+}
+
+body.dark-mode .nav-btn {
+  background: #333 !important;
+  color: #cfcfcf !important;
+  border: 1px solid rgb(255 255 255 / 10%) !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 30%) !important;
+}
+
+body.dark-mode .like-btn,
+body.dark-mode .like-btn:hover {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24) !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+body.dark-mode .custom-link {
+  background: #2a2a2a !important;
+  color: #e0e0e0 !important;
+  border: 1px solid #444 !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 20%) !important;
+}
+
+body.dark-mode .custom-link:hover {
+  background: #3a3a3a !important;
+  color: #fff !important;
+  border-color: #666 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 30%) !important;
+}
+
+body.dark-mode .custom-link.category-filter.active {
+  background: linear-gradient(135deg, #5a6fc0, #6a3f8a) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 3px 12px rgba(90, 111, 192, 0.4) !important;
+  transform: translateX(3px) !important;
+}
+
+body.dark-mode .user-profile-left {
+  background: #2a2a2a !important;
+  border: 1px solid #444 !important;
+}
+
+body.dark-mode .username {
+  color: #f5f5f5 !important;
+}
+
+body.dark-mode .avatar {
+  border: 3px solid #555 !important;
+}
+
+body.dark-mode .badge {
+  background-color: #2a2a2a !important;
+  color: #e0e0e0 !important;
+  border: 1px solid #444 !important;
+}
+
+body.dark-mode .badge:hover {
+  background-color: #3a3a3a !important;
+  color: #f5f5f5 !important;
+}
+
+
+body.dark-mode .current-status {
+  background: rgb(255 255 255 / 8%);
+  color: #aaa;
+}
+
+/* 通知栏黑暗模式 */
+body.dark-mode .notification-bar {
+  background: #2a2a2a !important;
+  color: #e0e0e0 !important;
+  border: 1px solid #444 !important;
+}
+
+body.dark-mode .notification-icon {
+  color: #e0e0e0 !important;
+}
+
+
+/* 归档页面 - 黑暗模式 */
+
+body.dark-mode .archive-year h2 {
+  color: #f5f5f5 !important;
+  border-bottom: 1px solid #404040 !important;
+}
+
+body.dark-mode .archive-item {
+  border-bottom: 1px dashed #404040 !important;
+}
+
+body.dark-mode .archive-year {
+  color: #f5f5f5 !important;
+}
+
+body.dark-mode .archive-title {
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode .archive-title:hover {
+  color: #90caf9 !important;
+}
+
+body.dark-mode .archive-date {
+  color: #888 !important;
+}
+
+body.dark-mode .archive-tag {
+  background: rgb(100 181 246 / 15%) !important;
+  color: #64b5f6 !important;
+}
+
+body.dark-mode .footer .copyright-block {
+  background: linear-gradient(
+    135deg,
+    rgba(128, 128, 128, 0.8),
+    rgba(64, 64, 64, 0.8)
+  );
+  padding: 8px 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  color:#fff;
+  font-size:14px;
+  font-family:inherit;
+  font-weight:400;
+}
+
+
+/* 动画效果 */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 移动端 */
+
+body.dark-mode .mobile-post-card {
+  background-color: #2a2a2a !important;
+  border: 1px solid #444 !important;
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode .mobile-post-title {
+  color: #f5f5f5 !important;
+}
+
+body.dark-mode .mobile-post-excerpt {
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode .mobile-post-date,
+body.dark-mode .mobile-post-category,
+body.dark-mode .post-date {
+  color: #b0b0b0 !important;
+}
+
+body.dark-mode .category-item ,
+body.dark-mode .category-filter{
+  background: rgb(255 255 255 / 10%);
+  color: #fff;
+  border-color: rgb(255 255 255 / 15%);
+}
+
+body.dark-mode .category-item:hover ,
+body.dark-mode .category-filter:hover{
+  background: rgb(255 255 255 / 18%);
+  color: #fff;
+  transform: translateY(-1px);
+}

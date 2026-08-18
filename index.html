@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>我的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="个人主页">
+  <meta name="keywords" content="个人主页,博客,前端,编程">
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style1.css">
+  <link rel="stylesheet" href="css/dark-mode1.css">
+  <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="shortcut icon" href="images/favicon.ico"> 
+</head>
+<body>
+  <div class="dark-mode-toggle" id="darkModeToggle" title="切换黑暗模式">
+    <i class="fa fa-moon-o" id="darkModeIcon"></i>
+  </div>
+  
+ <div class="site-title-art">
+  <img src="./images/web-day.png" alt="我的博客天地" class="site-title-day">
+  <img src="./images/web-dark.png" alt="我的博客天地" class="site-title-dark">
+</div>
+  
+  <main class="container">
+    <div class="column column-left fade-in">
+      <div class="user-profile-left">
+        <img id="sidebarAvatar" src="./images/logo.png" alt="用户头像" class="avatar">
+        <h3 id="sidebarUsername" class="username">@王映寒</h3>
+        <div class="current-status">
+          <span class="status-dot"></span>
+          <span>Currently building</span>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <a href="" class="nav-btn">首页</a>
+        <button id="archiveBtn" class="nav-btn">归档</button>
+        <button id="likeBtn" class="nav-btn like-btn">点赞</button>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">专题</h5>
+          <div>
+            <a href="#" class="custom-link category-filter active" data-category="全部文章">全部文章 <span class="category-count"></span></a>
+            <a href="#" class="custom-link category-filter" data-category="技术探索">技术探索 <span class="category-count"></span></a>
+            <a href="#" class="custom-link category-filter" data-category="生活记录">生活记录 <span class="category-count"></span></a>
+            <a href="#" class="custom-link category-filter" data-category="学习记录">学习记录 <span class="category-count"></span></a>
+            <a href="#" class="custom-link category-filter" data-category="读书感悟">读书感悟 <span class="category-count"></span></a>
+            <a href="#" class="custom-link category-filter" data-category="个人创作">个人创作 <span class="category-count"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="column column-center fade-in">
+      <div class="mobile-categories">
+        <a href="#" class="category-item category-filter active" data-category="全部文章">全部文章 <span class="category-count"></span></a>
+        <a href="#" class="category-item category-filter" data-category="技术探索">技术探索 <span class="category-count"></span></a>
+        <a href="#" class="category-item category-filter" data-category="生活记录">生活记录 <span class="category-count"></span></a>
+        <a href="#" class="category-item category-filter" data-category="学习记录">学习记录 <span class="category-count"></span></a>
+        <a href="#" class="category-item category-filter" data-category="读书感悟">读书感悟 <span class="category-count"></span></a>
+        <a href="#" class="category-item category-filter" data-category="个人创作">个人创作 <span class="category-count"></span></a>
+      </div>
+      
+      <div class="notification-bar">
+        <i class="fa fa-bell notification-icon"></i>
+        <span>朋友们，欢迎访问我的个人博客。</span>
+      </div>
+      
+      <div class="card mb-4">
+        <img src="./images/photo.jpg" class="card-img-top" alt="特色图片" style="border-radius: 10px; max-height: 250px; object-fit: cover;">
+      </div>
+
+      <div id="mobile-posts-container">
+      </div>
+      
+      <div id="desktop-posts-container">
+      </div>
+
+      <div id="archive-container">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">归档</h5>
+            <div class="archive-list" id="archive-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="column column-right fade-in">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">近期更新</h5>
+          <div id="recent-updates-list">
+            <div class="text-center py-3">
+              <div class="spinner-border spinner-border-sm text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="murmur-section">
+             <h6 class="murmur-title"><i class="fa fa-commenting-o"></i> 碎碎念</h6>
+            <div class="murmur-timeline" id="murmur-list">
+              <div class="text-muted small">加载中...</div>
+            </div>
+            <button id="murmur-expand-btn" class="murmur-expand-btn">展开全部 <i class="fa fa-chevron-down"></i></button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">标签云</h5>
+          <div style="line-height: 2;">
+            <a href="#" class="badge" style="background-color: rgba(70, 70, 70, 0.7); margin-right: 5px; margin-bottom: 5px; font-size: 1.1em; padding: 5px 10px; border-radius: 15px; display: inline-block;">@王映寒</a>
+            <a href="#" class="badge" style="background-color: rgba(70, 70, 70, 0.7); margin-right: 5px; margin-bottom: 5px; font-size: 0.9em; padding: 5px 10px; border-radius: 15px; display: inline-block;">经济学</a>
+            <a href="#" class="badge" style="background-color: rgba(70, 70, 70, 0.7); margin-right: 5px; margin-bottom: 5px; font-size: 1.2em; padding: 5px 10px; border-radius: 15px; display: inline-block;">存在主义</a>
+            <a href="#" class="badge" style="background-color: rgba(70, 70, 70, 0.7); margin-right: 5px; margin-bottom: 5px; font-size: 1.0em; padding: 5px 10px; border-radius: 15px; display: inline-block;">生活随感</a>
+            <a href="#" class="badge" style="background-color: rgba(70, 70, 70, 0.7); margin-right: 5px; margin-bottom: 5px; font-size: 0.9em; padding: 5px 10px; border-radius: 15px; display: inline-block;">体验</a>
+            <a href="#" class="badge" style="background-color: rgba(70, 70, 70, 0.7); margin-right: 5px; margin-bottom: 5px; font-size: 1.1em; padding: 5px 10px; border-radius: 15px; display: inline-block;">ENTP</a>
+            <a href="#" class="badge" style="background-color: rgba(70, 70, 70, 0.7); margin-right: 5px; margin-bottom: 5px; font-size: 0.8em; padding: 5px 10px; border-radius: 15px; display: inline-block;">Python</a>
+            <a href="#" class="badge" style="background-color: rgba(70, 70, 70, 0.7); margin-right: 5px; margin-bottom: 5px; font-size: 1.0em; padding: 5px 10px; border-radius: 15px; display: inline-block;">理性</a>
+            <a href="#" class="badge" style="background-color: rgba(70, 70, 70, 0.7); margin-right: 5px; margin-bottom: 5px; font-size: 0.9em; padding: 5px 10px; border-radius: 15px; display: inline-block;">自我</a>
+            <a href="#" class="badge" style="background-color: rgba(70, 70, 70, 0.7); margin-right: 5px; margin-bottom: 5px; font-size: 1.0em; padding: 5px 10px; border-radius: 15px; display: inline-block;">南京师范大学</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="copyright-block">
+      &copy; 2026 @王映寒
+    </div>
+  </footer>
+
+  <div class="back-to-top" id="backToTop">
+    <i class="fa fa-chevron-up"></i>
+  </div>
+
+<div class="mobile-welcome-screen" id="mobileWelcome">
+    <div class="welcome-content">
+      <div class="welcome-profile">
+        <img id="welcomeAvatar" src="./images/logo.png" alt="用户头像" class="welcome-avatar">
+        <h2 id="welcomeUsername" class="welcome-username">@王映寒</h2>
+      </div>
+      <div class="welcome-text">
+        <p>欢迎来到我的博客世界</p>
+      </div>
+      <div class="welcome-arrow">
+        <i class="fa fa-chevron-up"></i>
+        <p>向上滑动进入</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    // 移动端欢迎屏幕控制
+     let touchStartY = 0;
+     let touchEndY = 0;
+     let isWelcomeActive = true;
+     let hasEnteredMainPage = false; // 
+     
+     function handleSwipe() {
+       const swipeDistance = touchStartY - touchEndY;
+       
+       // 只允许向上滑动进入主页面，且只在欢迎页激活时
+       if (swipeDistance > 50 && isWelcomeActive) {
+         hideWelcomeScreen();
+       }
+       // 如果已经进入过主页面，阻止向下滑动回到欢迎页
+       else if (swipeDistance < -50 && !isWelcomeActive && hasEnteredMainPage) {
+         // 不执行任何操作，阻止回到欢迎页
+
+       }
+     }
+     
+     function hideWelcomeScreen() {
+       const welcomeScreen = document.getElementById('mobileWelcome');
+       const mainContent = document.querySelector('main.container');
+       
+       welcomeScreen.style.display = 'none';
+       mainContent.classList.add('mobile-show');
+       isWelcomeActive = false;
+       hasEnteredMainPage = true; // 标记已经进入过主页面
+       
+       // 记录用户已访问过主页面（页面级别，刷新后重置）
+       window.hasVisitedMainPageInSession = true;
+     }
+     
+     // 触摸事件监听 - 现在在整个页面上监听，但根据状态处理
+     document.addEventListener('touchstart', function(e) {
+       touchStartY = e.changedTouches[0].screenY;
+     });
+     
+     document.addEventListener('touchend', function(e) {
+       touchEndY = e.changedTouches[0].screenY;
+       handleSwipe();
+     });
+     
+     // 点击箭头也可以进入
+     document.addEventListener('click', function(e) {
+       if (e.target.closest('.welcome-arrow') && isWelcomeActive) {
+         hideWelcomeScreen();
+       }
+     });
+    
+
+    
+    // 检测是否为移动设备
+    function isMobileDevice() {
+      return window.innerWidth <= 767;
+    }
+    
+    // 初始化移动端欢迎屏幕
+    function initMobileWelcome() {
+      const welcomeScreen = document.getElementById('mobileWelcome');
+      const mainContent = document.querySelector('main.container');
+      
+      // 检查是否在当前页面会话中已经进入过主页面
+      // 使用页面级变量而不是存储，确保每次刷新都重新显示欢迎页
+      const hasVisitedInThisSession = window.hasVisitedMainPageInSession || false;
+      
+      if (isMobileDevice() && !hasVisitedInThisSession) {
+        // 只有在移动端且在当前会话中未访问过主页面时才显示欢迎页
+        welcomeScreen.style.display = 'flex';
+        mainContent.classList.remove('mobile-show');
+        isWelcomeActive = true;
+        hasEnteredMainPage = false;
+      } else {
+        // 桌面端或已访问过主页面，直接显示主页面
+        welcomeScreen.style.display = 'none';
+        mainContent.classList.add('mobile-show');
+        isWelcomeActive = false;
+        hasEnteredMainPage = true;
+      }
+    }
+    
+    // 窗口大小改变时重新检测
+    window.addEventListener('resize', function() {
+      initMobileWelcome();
+    });
+    
+    // 移动端分页功能
+    let currentPage = 1;
+    const totalPages = 3;
+    
+    function changePage(direction) {
+      const newPage = currentPage + direction;
+      if (newPage >= 1 && newPage <= totalPages) {
+        goToPage(newPage);
+      }
+    }
+    
+    function goToPage(page) {
+      if (page < 1 || page > totalPages) return;
+      
+      currentPage = page;
+      
+      // 更新按钮状态
+      document.querySelectorAll('.mobile-page-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      // 设置当前页按钮为活跃状态
+      const pageButtons = document.querySelectorAll('.mobile-page-btn');
+      pageButtons[page].classList.add('active'); // 跳过上一页按钮
+      
+      // 更新上一页/下一页按钮状态
+      document.getElementById('prev-btn').disabled = (currentPage === 1);
+      document.getElementById('next-btn').disabled = (currentPage === totalPages);
+      
+      // 这里可以添加实际的内容切换逻辑
+
+    }
+    
+    // 更新时间和日期
+    function updateDateTime() {
+      const now = new Date();
+      
+      // 更新时间 - 格式化为 HH:MM:SS
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const timeElement = document.getElementById('current-time');
+      if (timeElement) {
+        timeElement.textContent = `${hours}:${minutes}:${seconds}`;
+      }
+      
+      // 更新日期 - 格式化为 YYYY-MM-DD
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const day = String(now.getDate()).padStart(2, '0');
+      const dateElement = document.getElementById('current-date');
+      if (dateElement) {
+        dateElement.textContent = `${year}-${month}-${day}`;
+      }
+    }
+
+    // 初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      // 初始化移动端欢迎屏幕
+      initMobileWelcome();
+
+      // 初始化移动端侧边栏
+
+      // 初始化移动端分页
+      if (isMobileDevice()) {
+        goToPage(1);
+      }
+
+      // 立即更新一次时间日期
+      updateDateTime();
+
+      // 每秒更新一次时间日期
+      setInterval(updateDateTime, 1000);
+    });
+  </script>
+<script>
+// 点赞按钮动画效果
+function initLikeButton() {
+  const likeBtn = document.getElementById('likeBtn');
+  if (!likeBtn) return;
+  
+  likeBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // 添加心跳动画
+    this.classList.add('heart-beat');
+    setTimeout(() => {
+      this.classList.remove('heart-beat');
+    }, 600);
+    
+    // 创建波纹效果
+    createRippleEffect(e, this);
+    
+    // 创建随机动画效果
+    const animations = [
+      createCanvasParticleExplosion,
+      createFloatingNumbers,
+      createRainbowHearts,
+      createRandomMessage
+    ];
+    const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+    randomAnimation(e);
+  });
+}
+
+// 创建波纹效果
+function createRippleEffect(e, button) {
+  const rect = button.getBoundingClientRect();
+  const size = Math.max(rect.width, rect.height);
+  const x = e.clientX - rect.left - size / 2;
+  const y = e.clientY - rect.top - size / 2;
+  
+  const ripple = document.createElement('span');
+  ripple.className = 'ripple';
+  ripple.style.width = ripple.style.height = size + 'px';
+  ripple.style.left = x + 'px';
+  ripple.style.top = y + 'px';
+  
+  button.appendChild(ripple);
+  
+  setTimeout(() => {
+    ripple.remove();
+  }, 600);
+}
+
+// 1. Canvas粒子爆炸效果
+function createCanvasParticleExplosion(e) {
+  const canvas = document.createElement('canvas');
+  canvas.width = 300;
+  canvas.height = 300;
+  canvas.style.position = 'fixed';
+  canvas.style.left = (e.clientX - 150) + 'px';
+  canvas.style.top = (e.clientY - 150) + 'px';
+  canvas.style.pointerEvents = 'none';
+  canvas.style.zIndex = '9999';
+  document.body.appendChild(canvas);
+  
+  const ctx = canvas.getContext('2d');
+  const particles = [];
+  
+  // 创建粒子
+  for (let i = 0; i < 30; i++) {
+    particles.push({
+      x: 150,
+      y: 150,
+      vx: (Math.random() - 0.5) * 10,
+      vy: (Math.random() - 0.5) * 10,
+      life: 1,
+      decay: Math.random() * 0.02 + 0.01,
+      size: Math.random() * 4 + 2,
+      color: `hsl(${Math.random() * 60 + 300}, 100%, 60%)`
+    });
+  }
+  
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    particles.forEach((particle, index) => {
+      particle.x += particle.vx;
+      particle.y += particle.vy;
+      particle.life -= particle.decay;
+      particle.vy += 0.1; // 重力
+      
+      if (particle.life <= 0) {
+        particles.splice(index, 1);
+        return;
+      }
+      
+      ctx.save();
+      ctx.globalAlpha = particle.life;
+      ctx.fillStyle = particle.color;
+      ctx.beginPath();
+      ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    });
+    
+    if (particles.length > 0) {
+      requestAnimationFrame(animate);
+    } else {
+      canvas.remove();
+    }
+  }
+  
+  animate();
+}
+
+// 2. 数字上浮+缩放效果
+function createFloatingNumbers(e) {
+  const numbers = ['+1', '♥', '★', '✨', '💖'];
+  const number = numbers[Math.floor(Math.random() * numbers.length)];
+  
+  const element = document.createElement('div');
+  element.textContent = number;
+  element.style.cssText = `
+    position: fixed;
+    left: ${e.clientX}px;
+    top: ${e.clientY}px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff6b6b;
+    pointer-events: none;
+    z-index: 9999;
+    animation: floatAndScale 2s ease-out forwards;
+  `;
+  
+  document.body.appendChild(element);
+  
+  setTimeout(() => {
+    element.remove();
+  }, 2000);
+}
+
+// 3. 彩虹喷射爱心效果
+function createRainbowHearts(e) {
+  const hearts = ['💖', '💕', '💗', '💓', '💝', '💘', '💞', '💟'];
+  const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#54a0ff', '#5f27cd'];
+  
+  for (let i = 0; i < 12; i++) {
+    const heart = document.createElement('div');
+    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+    heart.style.cssText = `
+      position: fixed;
+      left: ${e.clientX}px;
+      top: ${e.clientY}px;
+      font-size: 1.5rem;
+      color: ${colors[i % colors.length]};
+      pointer-events: none;
+      z-index: 9999;
+      animation: rainbowSpray 2s ease-out forwards;
+      animation-delay: ${i * 0.1}s;
+    `;
+    
+    // 设置随机方向
+    const angle = (Math.PI * 2 * i) / 12;
+    const distance = 80 + Math.random() * 40;
+    heart.style.setProperty('--end-x', Math.cos(angle) * distance + 'px');
+    heart.style.setProperty('--end-y', Math.sin(angle) * distance + 'px');
+    
+    document.body.appendChild(heart);
+    
+    setTimeout(() => {
+      heart.remove();
+    }, 2000 + i * 100);
+  }
+}
+
+// 4. 弹出句子/提示词效果
+function createRandomMessage(e) {
+  const messages = [
+    '太棒了！', '你真厉害！', '继续加油！', '超赞的！',
+    'Amazing!', 'Awesome!', '点赞成功！', '感谢支持！',
+    '你是最棒的！', '非常感谢！', '真是太好了！', '完美！'
+  ];
+  
+  const message = messages[Math.floor(Math.random() * messages.length)];
+  
+  const element = document.createElement('div');
+  element.textContent = message;
+  element.style.cssText = `
+    position: fixed;
+    left: ${e.clientX}px;
+    top: ${e.clientY - 30}px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 9999;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    animation: messagePopup 2.5s ease-out forwards;
+    transform-origin: center;
+  `;
+  
+  document.body.appendChild(element);
+  
+  setTimeout(() => {
+    element.remove();
+  }, 2500);
+}
+
+// 存储所有已加载的文章与当前分类
+let allArticles = [];
+let currentCategory = '全部文章';
+
+// 自动加载文章列表
+async function loadArticlesList() {
+  try {
+    // 首先尝试直接扫描文件夹
+    const articles = await scanAndParseArticles();
+
+    if (articles.length > 0) {
+      setArticles(articles);
+    } else {
+      // 如果扫描没有返回文章，也尝试从配置文件加载
+      await loadFromConfig();
+    }
+
+  } catch (error) {
+    console.warn('自动扫描失败，尝试从配置文件加载', error);
+    await loadFromConfig();
+  }
+}
+
+// 从配置文件加载（备用方案）
+async function loadFromConfig() {
+  try {
+    const response = await fetch('./articles/articles-config.json');
+    const articles = await response.json();
+    setArticles(articles);
+  } catch (error) {
+  }
+}
+
+// 设置文章列表并更新界面
+function setArticles(articles) {
+  // 按日期排序（最新的在前）
+  articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+  allArticles = articles;
+  updateCategoryCounts();
+  applyFilter(currentCategory, currentCategory !== '全部文章');
+}
+
+// 更新各分类的文章数量
+function updateCategoryCounts() {
+  const counts = {};
+  allArticles.forEach(a => {
+    const cat = a.category || '未分类';
+    counts[cat] = (counts[cat] || 0) + 1;
+  });
+  document.querySelectorAll('.category-filter').forEach(link => {
+    const cat = link.dataset.category;
+    const countEl = link.querySelector('.category-count');
+    if (!countEl) return;
+    countEl.textContent = (cat === '全部文章') ? allArticles.length : (counts[cat] || 0);
+  });
+}
+
+// 点击分类进行筛选
+function filterByCategory(category) {
+  currentCategory = category;
+  document.querySelectorAll('.category-filter').forEach(link => {
+    link.classList.toggle('active', link.dataset.category === category);
+  });
+  applyFilter(category, category !== '全部文章');
+}
+
+// 应用筛选并渲染文章
+function applyFilter(category, showAll) {
+  const filtered = category === '全部文章'
+    ? allArticles
+    : allArticles.filter(a => (a.category || '未分类') === category);
+  renderArticlesList(filtered, showAll);
+}
+
+// 扫描并解析文章
+async function scanAndParseArticles() {
+  try {
+    // 获取articles文件夹中的文件列表
+    const response = await fetch('./articles/');
+    
+    if (!response.ok) {
+      throw new Error('无法访问articles文件夹: ' + response.status);
+    }
+    
+    const text = await response.text();
+    
+    // 检查返回的内容是否为HTML目录列表
+    const isDirectoryListing = text.includes('<title>Index of') || 
+                              text.includes('Directory listing for') || 
+                              (text.includes('<html') && text.includes('.md'));
+    
+    let articles = [];
+    
+    if (isDirectoryListing) {
+      // 解析HTML获取.md文件列表
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(text, 'text/html');
+      const links = doc.querySelectorAll('a[href$=".md"]');
+      
+      // 遍历每个md文件，获取元数据
+      for (const link of links) {
+        const filename = link.getAttribute('href');
+        console.log('处理文件:', filename);
+        
+        if (filename && filename.endsWith('.md') && !filename.includes('config')) {
+          try {
+            const articleResponse = await fetch(`./articles/${filename}`);
+            if (articleResponse.ok) {
+              const content = await articleResponse.text();
+              
+              // 解析YAML前置元数据
+              const metadata = parseMarkdownMetadata(content, filename);
+              
+              if (metadata) {
+                articles.push(metadata);
+              }
+            }
+          } catch (error) {
+          }
+        }
+      }
+    } else {
+      // 如果不是HTML目录列表，尝试解析为JSON
+      try {
+        articles = JSON.parse(text);
+      } catch (error) {
+      }
+    }
+    
+    return articles;
+  } catch (error) {
+    return [];
+  }
+}
+
+// 每30秒检查一次新文章（可选功能）
+setInterval(() => {
+  loadArticlesList();
+}, 30000);
+
+  // 加载并显示最近更新的文章
+  async function loadRecentUpdates() {
+    try {
+      // 获取文章配置文件
+      const response = await fetch('articles/articles-config.json');
+      if (!response.ok) {
+        throw new Error(`获取文章列表失败: ${response.status}`);
+      }
+      
+      const articles = await response.json();
+      
+      // 按日期排序，最新的在前面
+      articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+      
+      // 取最新3篇文章
+      const recentArticles = articles.slice(0, 3);
+      
+      // 生成HTML
+      const recentUpdatesContainer = document.getElementById('recent-updates-list');
+      if (recentUpdatesContainer) {
+        if (recentArticles.length > 0) {
+          let html = '';
+          recentArticles.forEach(article => {
+            // 对文件名进行编码
+            const encodedFilename = encodeURIComponent(article.filename);
+            html += `<a href="article.html?file=${encodedFilename}" class="custom-link">${article.title}</a>`;
+          });
+          recentUpdatesContainer.innerHTML = html;
+        } else {
+          recentUpdatesContainer.innerHTML = '<div class="text-muted text-center py-3">暂无文章</div>';
+        }
+      }
+    } catch (error) {
+      const recentUpdatesContainer = document.getElementById('recent-updates-list');
+      if (recentUpdatesContainer) {
+        recentUpdatesContainer.innerHTML = '<div class="text-danger text-center py-3">加载失败</div>';
+      }
+    }
+  }
+
+  // 页面加载完成后初始化最近更新列表
+  document.addEventListener('DOMContentLoaded', function() {
+    loadRecentUpdates();
+  });
+
+  // 暴露函数到全局，方便手动调用
+  window.loadRecentUpdates = loadRecentUpdates;
+
+// 暴露函数到全局，方便手动调用
+window.loadRecentUpdates = loadRecentUpdates;
+
+// 扫描articles文件夹并更新配置文件（需要手动调用）
+async function scanArticlesFolder() {
+  try {
+    // 获取articles文件夹中的文件列表
+    const response = await fetch('./articles/');
+    const text = await response.text();
+    
+    // 解析HTML获取.md文件列表
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(text, 'text/html');
+    const links = doc.querySelectorAll('a[href$=".md"]');
+    
+    const articles = [];
+    
+    // 遍历每个md文件，获取元数据
+    for (const link of links) {
+      const filename = link.getAttribute('href');
+      if (filename && filename.endsWith('.md') && filename !== 'articles-config.json') {
+        try {
+          const articleResponse = await fetch(`./articles/${filename}`);
+          const content = await articleResponse.text();
+          
+          // 解析YAML前置元数据
+          const metadata = parseMarkdownMetadata(content, filename);
+          if (metadata) {
+            articles.push(metadata);
+          }
+        } catch (error) {
+        }
+      }
+    }
+    
+    return articles;
+    
+  } catch (error) {
+    return [];
+  }
+}
+
+// 在控制台中暴露扫描函数，方便手动调用
+window.scanArticlesFolder = scanArticlesFolder;
+
+// 解析Markdown文件的YAML前置元数据
+function parseMarkdownMetadata(content, filename) {
+  const lines = content.split('\n');
+  
+  // 检查是否以---开头（YAML前置元数据）
+  if (lines[0].trim() !== '---') {
+    // 如果没有YAML前置元数据，使用文件名和当前日期作为默认值
+    return {
+      title: filename.replace('.md', '').replace(/-/g, ' '),
+      date: new Date().toISOString().split('T')[0],
+      category: '未分类',
+      excerpt: '暂无摘要...',
+      filename: filename
+    };
+  }
+  
+  let yamlEnd = -1;
+  for (let i = 1; i < lines.length; i++) {
+    if (lines[i].trim() === '---') {
+      yamlEnd = i;
+      break;
+    }
+  }
+  
+  if (yamlEnd === -1) {
+    // 如果找不到结束的---，则使用默认值
+    return {
+      title: filename.replace('.md', '').replace(/-/g, ' '),
+      date: new Date().toISOString().split('T')[0],
+      category: '未分类',
+      excerpt: '暂无摘要...',
+      filename: filename
+    };
+  }
+  
+  // 解析YAML
+  const yamlLines = lines.slice(1, yamlEnd);
+  const metadata = { filename: filename };
+  
+  for (const line of yamlLines) {
+    const colonIndex = line.indexOf(':');
+    if (colonIndex > 0) {
+      const key = line.substring(0, colonIndex).trim();
+      const value = line.substring(colonIndex + 1).trim().replace(/^["']|["']$/g, '');
+      metadata[key] = value;
+    }
+  }
+  
+  // 确保必要字段存在
+  if (!metadata.title) {
+    metadata.title = filename.replace('.md', '').replace(/-/g, ' ');
+  }
+  
+  if (!metadata.date) {
+    metadata.date = new Date().toISOString().split('T')[0];
+  }
+  
+  if (!metadata.category) {
+    metadata.category = '未分类';
+  }
+  
+  // 提取文章摘要（取正文前150个字符）
+  const contentLines = lines.slice(yamlEnd + 1);
+  const contentText = contentLines.join('\n').replace(/#+\s*/g, '').replace(/\*\*|\*|`/g, '').trim();
+  metadata.excerpt = contentText.substring(0, 150) + (contentText.length > 150 ? '...' : '');
+  
+  return metadata;
+}
+
+// 渲染文章列表
+function renderArticlesList(articles, showAll = false) {
+  const mobileContainer = document.getElementById('mobile-posts-container');
+  const desktopContainer = document.getElementById('desktop-posts-container');
+  
+  if (!mobileContainer || !desktopContainer || articles.length === 0) {
+    return;
+  }
+  
+  // 移除现有的“查看更多”按钮
+  const existingButton = document.getElementById('load-more-btn');
+  if (existingButton) {
+    existingButton.parentElement.remove();
+  }
+  
+  // 清空现有内容
+  mobileContainer.innerHTML = '';
+  desktopContainer.innerHTML = '';
+  
+  // 确定显示的文章数量
+  const displayArticles = showAll ? articles : articles.slice(0, 4);
+  
+  // 渲染每篇文章并检测标题长度
+  displayArticles.forEach(article => {
+    // 检测标题长度
+    const isLongTitle = article.title.length > 15; // 根据实际效果调整
+    // 对文件名进行编码，防止特殊字符导致问题
+    const encodedFilename = encodeURIComponent(article.filename);
+        
+    // 格式化日期
+    const date = new Date(article.date);
+    const formattedDate = date.toLocaleDateString('zh-CN', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    
+    // 移动端文章卡片
+    const mobileCard = `
+      <div class="mobile-blog-post">
+        <div class="mobile-post-card">
+          <a href="article.html?file=${encodedFilename}" class="mobile-post-link">
+            <h3 class="mobile-post-title ${isLongTitle ? 'long-title' : ''}">
+              ${article.title || '无标题'}
+            </h3>
+            <p class="mobile-post-excerpt">
+              ${article.excerpt || '暂无摘要...'}
+            </p>
+            <div class="mobile-post-footer">
+              <span class="mobile-post-date">${formattedDate}</span>
+              <span class="mobile-post-category">${article.category || '未分类'}</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    `;
+    
+    // 桌面端文章卡片
+    const desktopCard = `
+      <div class="desktop-blog-post">
+        <div class="card mb-4 post-card">
+          <a href="article.html?file=${encodedFilename}" class="post-link">
+            <div class="card-body">
+              <h2 class="card-title post-title ${isLongTitle ? 'long-title' : ''}">
+                ${article.title || '无标题'}
+              </h2>
+              <p class="card-text post-excerpt">
+                ${article.excerpt || '暂无摘要...'}
+              </p>
+              <div class="post-footer">
+                <span class="post-date"><i class="fa fa-calendar"></i> ${formattedDate}</span>
+                <span class="post-category">${article.category || '未分类'}</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    `;
+    
+    mobileContainer.insertAdjacentHTML('beforeend', mobileCard);
+    desktopContainer.insertAdjacentHTML('beforeend', desktopCard);
+  });
+  
+  // 如果不是显示所有且有更多文章，添加“查看更多”按钮
+  if (!showAll && articles.length > 4) {
+    const loadMoreButton = `
+      <div id="load-more-wrapper" class="text-center mt-4">
+        <button id="load-more-btn" class="btn btn-dark" style="border-radius: 25px; padding: 10px 30px; font-weight: bold; transition: all 0.3s ease;">
+          查看更多文章
+        </button>
+      </div>
+    `;
+    // 只在desktop容器后添加按钮，避免重复
+    desktopContainer.insertAdjacentHTML('afterend', loadMoreButton);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  initLikeButton();
+  initBackToTop();
+  initMurmurAndArchive();
+  loadArticlesList(); // 自动加载文章列表
+  // 每30秒检查一次新文章（可选功能）
+  setInterval(() => {
+    loadArticlesList();
+  }, 30000);
+  
+  // “查看更多”按钮与分类筛选的事件监听
+  document.addEventListener('click', function(e) {
+    if (e.target && e.target.id === 'load-more-btn') {
+      loadAllArticles();
+    }
+    const categoryLink = e.target.closest('.category-filter');
+    if (categoryLink) {
+      e.preventDefault();
+      filterByCategory(categoryLink.dataset.category);
+    }
+  });
+});
+
+// 手动刷新文章列表的函数
+function refreshArticles() {
+  loadArticlesList();
+}
+
+// 暴露刷新函数到全局，方便调用
+window.refreshArticles = refreshArticles;
+
+// 加载所有文章（在筛选分类下显示全部）
+function loadAllArticles() {
+  applyFilter(currentCategory, true);
+}
+
+// 黑暗模式切换功能
+function initDarkMode() {
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  const darkModeIcon = document.getElementById('darkModeIcon');
+  const body = document.body;
+  
+  // 检查本地存储中的黑暗模式设置
+  const isDarkMode = localStorage.getItem('darkMode') === 'true';
+  
+  // 应用初始状态
+  if (isDarkMode) {
+    body.classList.add('dark-mode');
+    darkModeIcon.className = 'fa fa-sun-o';
+    darkModeToggle.title = '切换亮色模式';
+  } else {
+    body.classList.remove('dark-mode');
+    darkModeIcon.className = 'fa fa-moon-o';
+    darkModeToggle.title = '切换黑暗模式';
+  }
+  
+  // 添加点击事件监听器
+  darkModeToggle.addEventListener('click', function() {
+    const isCurrentlyDark = body.classList.contains('dark-mode');
+    
+    if (isCurrentlyDark) {
+      // 切换到亮色模式
+      body.classList.remove('dark-mode');
+      darkModeIcon.className = 'fa fa-moon-o';
+      darkModeToggle.title = '切换黑暗模式';
+      localStorage.setItem('darkMode', 'false');
+    } else {
+      // 切换到黑暗模式
+      body.classList.add('dark-mode');
+      darkModeIcon.className = 'fa fa-sun-o';
+      darkModeToggle.title = '切换亮色模式';
+      localStorage.setItem('darkMode', 'true');
+    }
+  });
+}
+
+// 碎碎念时间轴
+let allMurmurs = [];
+let murmursExpanded = false;
+
+async function loadMurmurs() {
+  try {
+    const response = await fetch('data/murmurs.json');
+    if (!response.ok) throw new Error('加载失败');
+    allMurmurs = await response.json();
+    renderMurmurs();
+  } catch (error) {
+    document.getElementById('murmur-list').innerHTML = '<div class="text-muted small">暂无碎碎念</div>';
+  }
+}
+
+function renderMurmurs() {
+  const list = document.getElementById('murmur-list');
+  const expandBtn = document.getElementById('murmur-expand-btn');
+  const showCount = murmursExpanded ? allMurmurs.length : Math.min(2, allMurmurs.length);
+  const shown = allMurmurs.slice(0, showCount);
+
+  list.innerHTML = shown.map(m => `
+    <div class="murmur-item">
+      <div class="murmur-time">${m.date}</div>
+      <div class="murmur-text">${m.content}</div>
+    </div>
+  `).join('');
+
+  if (allMurmurs.length <= 2) {
+    expandBtn.style.display = 'none';
+  } else {
+    expandBtn.style.display = '';
+    expandBtn.innerHTML = murmursExpanded ? '收起 <i class="fa fa-chevron-up"></i>' : '展开全部 <i class="fa fa-chevron-down"></i>';
+  }
+}
+
+// 归档视图
+let isArchiveView = false;
+
+function toggleArchive() {
+  isArchiveView = !isArchiveView;
+  const centerColumn = document.querySelector('.column-center');
+  const archiveBtn = document.getElementById('archiveBtn');
+
+  if (isArchiveView) {
+    buildArchive();
+    centerColumn.classList.add('archive-mode');
+    archiveBtn.classList.add('active');
+    archiveBtn.textContent = '返回';
+  } else {
+    centerColumn.classList.remove('archive-mode');
+    archiveBtn.classList.remove('active');
+    archiveBtn.textContent = '归档';
+  }
+}
+
+function buildArchive() {
+  const list = document.getElementById('archive-list');
+  const sorted = [...allArticles].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  // 按年份分组（年份倒序）
+  const years = {};
+  sorted.forEach(a => {
+    const y = new Date(a.date).getFullYear();
+    if (!years[y]) years[y] = [];
+    years[y].push(a);
+  });
+
+  const yearKeys = Object.keys(years).sort((a, b) => b - a);
+
+  let html = '';
+  yearKeys.forEach(year => {
+    html += `<div class="archive-year">${year}</div>`;
+    years[year].forEach(a => {
+      const encoded = encodeURIComponent(a.filename);
+      const d = new Date(a.date);
+      const dateStr = `${d.getMonth() + 1}月${d.getDate()}日`;
+      html += `
+        <div class="archive-item">
+          <span class="archive-date">${dateStr}</span>
+          <a href="article.html?file=${encoded}" class="archive-title">${a.title || '无标题'}</a>
+          <span class="archive-tag">${a.category || '未分类'}</span>
+        </div>
+      `;
+    });
+  });
+
+  list.innerHTML = html || '<div class="text-muted small text-center py-3">暂无文章</div>';
+}
+
+// 初始化碎碎念与归档
+function initMurmurAndArchive() {
+  loadMurmurs();
+  document.getElementById('murmur-expand-btn').addEventListener('click', function() {
+    murmursExpanded = !murmursExpanded;
+    renderMurmurs();
+  });
+  document.getElementById('archiveBtn').addEventListener('click', toggleArchive);
+}
+
+// 回到顶部功能
+function initBackToTop() {
+  const backToTopBtn = document.getElementById('backToTop');
+  if (!backToTopBtn) return;
+
+  window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 300) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  });
+
+  backToTopBtn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+// 在页面加载完成后初始化黑暗模式
+document.addEventListener('DOMContentLoaded', function() {
+  initDarkMode();
+});
+
+</script>
+</body>
+</html>
